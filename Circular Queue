@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define N 5
+int queue[N];
+int front=-1;
+int rear=-1;
+void enqueue();
+void dequeue ();
+void display();
+void peek();
+
+
+ int main()
+{
+ enqueue (6);
+ enqueue(0);
+ enqueue (-2);
+  enqueue (4);
+  enqueue (7);
+ display();
+ dequeue();
+ peek();
+ display();
+}
+
+void enqueue(int X)
+{
+  if (front==-1 && rear==-1)
+  {
+   front=rear=0;
+   queue[rear]=X;
+  }
+ else if(((rear+1)%N)==front)
+ {
+     printf("Queue is full");
+ }
+ else
+ {
+     rear=(rear+1)%N;
+     queue[rear]=X;
+ }
+}
+ void dequeue()
+ 
+ {
+   if(front==-1 && rear==-1)
+   {
+   printf("underflow");
+    }
+ else if(front==rear)
+ {
+     printf("dqueued element is %d",queue[front]);
+     front=rear=-1;
+ }
+ else
+ {
+     printf("dqueued element is %d",queue[front]);
+     front=(front+1)%N;
+ }
+ }
+
+void display()
+{
+    int i=front;
+    if(front==-1 && rear==-1)
+    {
+    printf("queue is empty");
+    }
+    else
+    {
+        printf("q is");
+        while(i!=rear)
+        {
+            printf("%d",queue[i]);
+            i=(i+1)%N;
+        }
+        printf("%d",queue[rear]);
+        
+    }
+    
+}
+void peek()
+ {
+     if(front==-1 &&rear==-1)
+    {
+        printf("underflow");
+    }
+    else
+    {
+        printf("first elem is %d",queue[front]);
+    }
+
+}
+
+
